@@ -3,47 +3,43 @@
 /********************************************************************/
 
 //Primary
-$lightblue: #0079ff;
-$buttonhover: #60abff;
-$error: #f74646;
-$white: #ffffff;
+$white: hsla(0, 0%, 100%, 1);
+$BrightBlue: hsl(220, 98%, 61%);
+$CheckBackground: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
 
-//Light mode
-$backgroundLight: #f6f8ff;
-$cardBackgroundLight: #fefefe;
-$borderShadowLight: #cbcccd;
-$titlesTextColorLight: #2b3442;
-$textColor01Light: #697c9a; // Dark & light & Joined date
-$textColor02Light: #4b6a9b; //standard text
-$textHoverColorLight: #2b3442; //Hover switch
+//Neutral
+//Light Theme
+$backgroundLight: hsla(0, 0%, 98%, 1); //background
+$backgroundTodoLight: hsla(0, 0%, 100%, 1); //background todo
+$textTodoCompleteLight: hsla(233, 11%, 84%, 1); //text todo complete
+$textTodoFooterLight: hsla(235, 9%, 61%, 1); //text todo footer
+$textTodoLight: hsla(235, 19%, 35%, 1); //text todo
+$textHoverLight: hsla(235, 19%, 35%, 1); //text Hover
 
-//Dark mode
-$backgroundDark: #141d2f;
-$cardBackgroundDark: #1e2a47;
-$borderShadowDark: #141d2f;
-$titlesTextColorDark: #ffffff;
-$textColor01Dark: #ffffff; // Dark & light & Joined date
-$textColor02Dark: #ffffff; //standard text
-$textHoverColorDark: #697c9a; //Hover switch
+// Dark Theme
+$backgroundDark: hsl(235, 21%, 11%); //background
+$backgroundTodoDark: hsla(235, 25%, 19%, 1); //background todo
+$textTodoCompleteDark: hsla(233, 14%, 35%, 1); //text todo complete
+$textTodoFooterDark: hsla(235, 16%, 42%, 1); //text todo footer
+$textTodoDark: hsla(235, 39%, 85%, 1); //text todo
+$textHoverDark: hsla(236, 32%, 92%, 1); //text Hover
 
 /***************************Setting body switch***************************/
 
 .light {
   --background: #{$backgroundLight};
-  --cardBackground: #{$cardBackgroundLight};
-  --bordershadow: #{$borderShadowLight};
-  --titlesTextColor: #{$titlesTextColorLight};
-  --textColor01: #{$textColor01Light};
-  --textColor02: #{$textColor02Light};
-  --textHoverColor: #{$textHoverColorLight};
+  --backgroundTodo: #{$backgroundTodoLight};
+  --textTodoComplete: #{$textTodoCompleteLight};
+  --textTodoFooter: #{$textTodoFooterLight};
+  --textTodo: #{$textTodoLight};
+  --textTodoHover: #{$textHoverLight};
 }
 
 .dark {
   --background: #{$backgroundDark};
-  --cardBackground: #{$cardBackgroundDark};
-  --bordershadow: #{$borderShadowDark};
-  --titlesTextColor: #{$titlesTextColorDark};
-  --textColor01: #{$textColor01Dark};
-  --textColor02: #{$textColor02Dark};
-  --textHoverColor: #{$textHoverColorDark};
+  --backgroundTodo: #{$backgroundTodoDark};
+  --textTodoComplete: #{$textTodoCompleteDark};
+  --textTodoFooter: #{$textTodoFooterDark};
+  --textTodo: #{$textTodoDark};
+  --textTodoHover: #{$textHoverDark};
 }
