@@ -2,44 +2,17 @@
 /***************************Setting colors***************************/
 /********************************************************************/
 
-//Primary
-$white: hsla(0, 0%, 100%, 1);
-$BrightBlue: hsl(220, 98%, 61%);
-$CheckBackground: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+$lightBlue: hsla(178, 60%, 48%, 1);
+$lightBlueHover: rgb(59, 219, 213);
+$lightYellow: hsla(39, 88%, 58%, 1);
+$lightYellowHover: hsla(39, 100%, 69%, 1);
+$DarkNavy: hsla(200, 32%, 15%, 1);
+$DarkNavyHover: rgb(43, 60, 69);
+$SemiDarkNavy: hsla(200, 35%, 19%, 1);
+$Silver: hsla(199, 24%, 73%, 1);
+$SilverHover: hsla(199, 24%, 73%, 1);
 
-//Neutral
-//Light Theme
-$backgroundLight: hsla(0, 0%, 98%, 1); //background
-$backgroundTodoLight: hsla(0, 0%, 100%, 1); //background todo
-$textTodoCompleteLight: hsla(233, 11%, 84%, 1); //text todo complete
-$textTodoFooterLight: hsla(235, 9%, 61%, 1); //text todo footer
-$textTodoLight: hsla(235, 19%, 35%, 1); //text todo
-$textHoverLight: hsla(235, 19%, 35%, 1); //text Hover
-
-// Dark Theme
-$backgroundDark: hsl(235, 21%, 11%); //background
-$backgroundTodoDark: hsla(235, 25%, 19%, 1); //background todo
-$textTodoCompleteDark: hsla(233, 14%, 35%, 1); //text todo complete
-$textTodoFooterDark: hsla(235, 16%, 42%, 1); //text todo footer
-$textTodoDark: hsla(235, 39%, 85%, 1); //text todo
-$textHoverDark: hsla(236, 32%, 92%, 1); //text Hover
-
-/***************************Setting body switch***************************/
-
-.light {
-  --background: #{$backgroundLight};
-  --backgroundTodo: #{$backgroundTodoLight};
-  --textTodoComplete: #{$textTodoCompleteLight};
-  --textTodoFooter: #{$textTodoFooterLight};
-  --textTodo: #{$textTodoLight};
-  --textTodoHover: #{$textHoverLight};
-}
-
-.dark {
-  --background: #{$backgroundDark};
-  --backgroundTodo: #{$backgroundTodoDark};
-  --textTodoComplete: #{$textTodoCompleteDark};
-  --textTodoFooter: #{$textTodoFooterDark};
-  --textTodo: #{$textTodoDark};
-  --textTodoHover: #{$textHoverDark};
-}
+$YellowBoxShadow: rgb(172, 119, 22);
+$LightBlueBoxShadow: rgb(28, 127, 124);
+$DarkNavyBoxShadow: rgb(20, 32, 39);
+$SilverBoxShadow: rgb(121, 137, 145);
