@@ -21,14 +21,14 @@
 body {
   text-align: left;
   background-color: var(--background);
-  background-image: url(./../../images/bg-desktop-light.jpg);
-  background-size: 100%;
-  background-position: top;
+  background-image: url(..//..//images/bg-desktop-light.jpg);
   background-repeat: no-repeat;
+  background-position: top;
+  background-size: 100%;
   font-size: 18px;
   font-weight: 400;
   color: var(--textTodoFooter);
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
 
   /********************Media********************/
   @media screen and (max-width: 761px) {
@@ -36,11 +36,28 @@ body {
   /*********************************************/
 }
 
+/*************interact with JS***************/
+.dark {
+  background-image: url(..//..//images/bg-desktop-dark.jpg);
+}
+/*********************************************/
+
 /****************************setting text*****************************/
 h1 {
   font-size: 40px;
   font-weight: 700;
+  text-transform: uppercase;
   color: $white;
+}
+
+h2 {
+  text-transform: uppercase;
+  color: var(--textTodo);
+}
+
+p {
+  font-size: 14px;
+  font-weight: 700;
 }
 
 /***************************Setting mixxin***************************/

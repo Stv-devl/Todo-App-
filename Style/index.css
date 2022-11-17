@@ -39,22 +39,39 @@
 body {
   text-align: left;
   background-color: var(--background);
-  background-image: url(./../../images/bg-desktop-light.jpg);
-  background-size: 100%;
-  background-position: top;
+  background-image: url(..//..//images/bg-desktop-light.jpg);
   background-repeat: no-repeat;
+  background-position: top;
+  background-size: 100%;
   font-size: 18px;
   font-weight: 400;
   color: var(--textTodoFooter);
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
   /********************Media********************/
   /*********************************************/
 }
+/*************interact with JS***************/
+.dark {
+  background-image: url(..//..//images/bg-desktop-dark.jpg);
+}
+
+/*********************************************/
 /****************************setting text*****************************/
 h1 {
   font-size: 40px;
   font-weight: 700;
+  text-transform: uppercase;
   color: hsl(0deg, 0%, 100%);
+}
+
+h2 {
+  text-transform: uppercase;
+  color: var(--textTodo);
+}
+
+p {
+  font-size: 14px;
+  font-weight: 700;
 }
 
 /***************************Setting mixxin***************************/
@@ -71,13 +88,124 @@ a:visited {
 main {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   min-height: 100vh;
+  width: 541px;
+  margin: 0 auto;
+  /******************************************/
 }
 main .nav-container {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 69px auto 49px auto;
+  /*************interact with JS*************/
+}
+main .nav-container .switch {
+  cursor: pointer;
+}
+main .nav-container .switch #dark {
+  transform: translateX(24px);
+  opacity: 0;
+  transition: 0.15s ease;
+}
+main .nav-container .switch #light {
+  opacity: 1;
+  transition: 0.15s ease;
+}
+main .nav-container .darkclicked #dark {
+  opacity: 1;
+}
+main .nav-container .darkclicked #light {
+  opacity: 0;
+}
+main .input-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 541px;
+  height: 64px;
+  padding-left: 24px;
+  border-radius: 5px;
+  box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+  background-color: var(--backgroundTodo);
+  margin-bottom: 36px;
+}
+main .input-wrapper .circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  border: 1px solid rgba(194, 195, 214, 0.5);
+}
+main .input-wrapper input {
+  padding-left: 50px;
+  width: 100%;
+  border: none;
+  font-size: 18px;
+  color: var(--textTodo);
+  background: none;
+}
+main ul {
+  width: 100%;
+  border-radius: 5px;
+  background-color: var(--backgroundTodo);
+  margin-bottom: 37px;
+}
+main ul .todo {
+  display: flex;
+  align-items: center;
+  color: var(--textTodo);
+  height: 50px;
+  border-bottom: 1px solid rgba(194, 195, 214, 0.5);
+  padding: 0 24px 0 24px;
+}
+main ul .todo button {
+  cursor: pointer;
+  background: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  border: 1px solid rgba(194, 195, 214, 0.5);
+  margin-right: 24px;
+}
+main ul .list-footer-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 50px;
+  justify-content: space-between;
+  padding: 0 24px 0 24px;
+}
+main ul .list-footer-container .list-footer-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+}
+main ul .list-footer-container .list-footer-wrapper #all {
+  cursor: pointer;
+}
+main ul .list-footer-container .list-footer-wrapper #all:hover {
+  color: hsl(220deg, 98%, 61%);
+}
+main ul .list-footer-container .list-footer-wrapper #active {
+  cursor: pointer;
+}
+main ul .list-footer-container .list-footer-wrapper #active:hover {
+  color: hsl(220deg, 98%, 61%);
+}
+main ul .list-footer-container .list-footer-wrapper #completed {
+  cursor: pointer;
+}
+main ul .list-footer-container .list-footer-wrapper #completed:hover {
+  color: hsl(220deg, 98%, 61%);
+}
+main ul .list-footer-container #clear {
+  cursor: pointer;
+}
+main ul .list-footer-container #clear:hover {
+  color: hsl(220deg, 98%, 61%);
 }
 
 /*****align footer and set size and color*****/

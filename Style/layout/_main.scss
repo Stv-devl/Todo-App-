@@ -3,11 +3,136 @@
 /**********************************************************************/
 
 main {
-  @include center;
+  display: flex;
+  align-items: center;
   flex-direction: column;
   min-height: 100vh;
+  width: 541px;
+  margin: 0 auto;
 
   .nav-container {
     @include row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 69px auto 49px auto;
+
+    .switch {
+      cursor: pointer;
+      #dark {
+        transform: translateX(24px);
+        opacity: 0;
+        transition: 0.15s ease;
+      }
+      #light {
+        opacity: 1;
+        transition: 0.15s ease;
+      }
+    }
+
+    /*************interact with JS*************/
+    .darkclicked {
+      #dark {
+        opacity: 1;
+      }
+      #light {
+        opacity: 0;
+      }
+    }
+  }
+  /******************************************/
+
+  .input-wrapper {
+    @include row;
+    align-items: center;
+    width: 541px;
+    height: 64px;
+    padding-left: 24px;
+    border-radius: 5px;
+    box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+    background-color: var(--backgroundTodo);
+    margin-bottom: 36px;
+
+    .circle {
+      width: 24px;
+      height: 24px;
+      border-radius: 100%;
+      border: 1px solid rgba(194, 195, 214, 0.5);
+    }
+    input {
+      padding-left: 50px;
+      width: 100%;
+      border: none;
+      font-size: 18px;
+      color: var(--textTodo);
+      background: none;
+    }
+  }
+
+  ul {
+    width: 100%;
+    border-radius: 5px;
+    background-color: var(--backgroundTodo);
+    margin-bottom: 37px;
+
+    .todo {
+      display: flex;
+      align-items: center;
+      color: var(--textTodo);
+      height: 50px;
+      border-bottom: 1px solid rgba(194, 195, 214, 0.5);
+      padding: 0 24px 0 24px;
+
+      button {
+        cursor: pointer;
+        background: none;
+        width: 24px;
+        height: 24px;
+        border-radius: 100%;
+        border: 1px solid rgba(194, 195, 214, 0.5);
+        margin-right: 24px;
+      }
+    }
+
+    .list-footer-container {
+      @include row;
+      align-items: center;
+      height: 50px;
+      justify-content: space-between;
+      padding: 0 24px 0 24px;
+
+      .list-footer-wrapper {
+        @include row;
+        gap: 18px;
+
+        #all {
+          cursor: pointer;
+
+          &:hover {
+            color: $BrightBlue;
+          }
+        }
+
+        #active {
+          cursor: pointer;
+          &:hover {
+            color: $BrightBlue;
+          }
+        }
+        #completed {
+          cursor: pointer;
+          &:hover {
+            color: $BrightBlue;
+          }
+        }
+      }
+
+      #clear {
+        cursor: pointer;
+        &:hover {
+          color: $BrightBlue;
+        }
+      }
+    }
   }
 }

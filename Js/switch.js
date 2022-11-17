@@ -1,8 +1,7 @@
-const switchs = document.querySelector(".switch-flexbox");
-const dark = document.querySelector(".dark");
-const light = document.querySelector(".light");
+const switchs = document.querySelector(".switch");
+const dark = document.getElementById("dark");
+const light = document.getElementById("light");
 const body = document.querySelector("body");
-const themeIcon = document.querySelector(".theme-icon");
 
 //start with prefer theme of user, if no prefer theme start with light.
 function starterTheme() {
@@ -14,16 +13,13 @@ function starterTheme() {
 
   if (preferLight.matches == true) {
     body.classList.add("light");
-    switchtxt.textContent = "dark";
-    themeIcon.classList.remove("darkclicked");
+    switchs.classList.remove("darkclicked");
   } else if (preferDark.matches == true) {
     body.classList.add("dark");
-    switchtxt.textContent = "light";
-    themeIcon.classList.add("darkclicked");
+    switchs.classList.add("darkclicked");
   } else {
     body.classList.add("light");
-    switchtxt.textContent = "dark";
-    themeIcon.classList.remove("darkclicked");
+    switchs.classList.remove("darkclicked");
   }
 }
 starterTheme();
@@ -33,12 +29,10 @@ switchs.addEventListener("click", () => {
   if (body.classList == "dark") {
     body.classList.remove("dark");
     body.classList.add("light");
-    switchtxt.textContent = "dark";
-    themeIcon.classList.remove("darkclicked");
+    switchs.classList.remove("darkclicked");
   } else {
     body.classList.remove("light");
     body.classList.add("dark");
-    switchtxt.textContent = "light";
-    themeIcon.classList.add("darkclicked");
+    switchs.classList.add("darkclicked");
   }
 });
