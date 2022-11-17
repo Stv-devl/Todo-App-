@@ -4,7 +4,7 @@
 
 /****************************setting fonts***************************/
 
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
 
 /****************************Setting page****************************/
 
@@ -15,105 +15,67 @@
   list-style-type: none;
   margin-block: 0;
   outline: none;
-  font-family: "Outfit", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 body {
-  text-align: center;
-  background: $DarkNavy;
-  font-size: 14px;
-  font-weight: 500;
-  color: $Silver;
-  animation: animBefore 2s ease forwards;
-
-  @keyframes animBefore {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-}
-/****************************setting text*****************************/
-h1,
-h2,
-h4 {
-  font-size: 16px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-p {
-  letter-spacing: 0.9px;
-}
-
-#vsCpu,
-#players {
-  font-size: 20px;
-  font-weight: 700;
-}
-
-h3 {
-  font-size: 24px;
-  font-weight: 700;
-  color: $DarkNavy;
-}
-h5,
-h6 {
-  font-size: 40px;
-  font-weight: 700;
-  color: $lightYellow;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
+  text-align: left;
+  background-color: var(--background);
+  background-image: url(..//..//images/bg-desktop-light.jpg);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 100%;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--textTodoFooter);
+  transition: background-color 0.2s ease-in-out;
 
   /********************Media********************/
-  @media screen and (max-width: 500px) {
-    font-size: 24px;
+  @media screen and (max-width: 761px) {
   }
   /*********************************************/
 }
-h6 {
-  color: $Silver;
-}
 
-#quit,
-#nextRound {
-  font-size: 16px;
-  font-weight: 700;
-  color: $DarkNavy;
-}
-
+/*************interact with JS***************/
 .dark {
+  background-image: url(..//..//images/bg-desktop-dark.jpg);
+}
+/*********************************************/
+
+/****************************setting text*****************************/
+h1 {
+  font-size: 40px;
+  font-weight: 700;
   text-transform: uppercase;
-  color: $DarkNavy;
+  color: $white;
 }
 
-/***************************Setting button**************************/
-
-button {
-  border: none;
-  cursor: pointer;
-  border-radius: 15px;
+h2 {
   text-transform: uppercase;
-  letter-spacing: 1px;
+  color: var(--textTodo);
+}
+
+p {
+  font-size: 14px;
   font-weight: 700;
 }
 
 /***************************Setting mixxin***************************/
+
 @mixin center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 @mixin row {
   display: flex;
   flex-direction: row;
 }
+
 /***************************Text link***************************/
 a,
 a:visited {
-  color: green;
+  color: blue;
   text-decoration: none;
 }
