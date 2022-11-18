@@ -46,7 +46,8 @@ body {
   font-size: 18px;
   font-weight: 400;
   color: var(--textTodoFooter);
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.4s ease-in-out;
+  transition: background-image 0.4s ease-in-out;
   /********************Media********************/
   /*********************************************/
 }
@@ -131,6 +132,7 @@ main .input-wrapper {
   border-radius: 5px;
   box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
   background-color: var(--backgroundTodo);
+  transition: background-color 0.4s ease-in-out;
   margin-bottom: 36px;
 }
 main .input-wrapper .circle {
@@ -151,7 +153,10 @@ main .todo-list {
   width: 100%;
   border-radius: 5px;
   background-color: var(--backgroundTodo);
+  transition: background-color 0.4s ease-in-out;
   margin-bottom: 37px;
+  /*****************************************interact with JS*****************************************/
+  /************************************************************************************************/
 }
 main .todo-list .todo {
   display: flex;
@@ -161,14 +166,25 @@ main .todo-list .todo {
   border-bottom: 1px solid rgba(194, 195, 214, 0.5);
   padding: 0 24px 0 24px;
 }
-main .todo-list .todo button {
+main .todo-list .todo .btn {
   cursor: pointer;
   background: none;
   width: 24px;
   height: 24px;
   border-radius: 100%;
   border: 1px solid rgba(194, 195, 214, 0.5);
-  margin-right: 24px;
+}
+main .todo-list .todo .text {
+  width: 80%;
+  margin-left: 24px;
+}
+main .todo-list .todo .cross {
+  width: 10%;
+  height: 50px;
+  cursor: pointer;
+  background: none;
+  border-radius: 100%;
+  border: none;
 }
 main .todo-list .list-footer-container {
   display: flex;
@@ -206,6 +222,20 @@ main .todo-list .list-footer-container #clear {
 }
 main .todo-list .list-footer-container #clear:hover {
   color: hsl(220deg, 98%, 61%);
+}
+main .todo-list .btnClicked {
+  color: rgb(168, 168, 168);
+  text-decoration: line-through;
+}
+main .todo-list .btnClicked .btn {
+  background-image: url(./..//..//images/icon-check.svg);
+  background-position: center;
+  background: linear-gradient(to right, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
+}
+main .todo-list .btnClicked .cross {
+  background-image: url(./..//..//images/icon-cross.svg);
+  background-position: bottom 15px right 20px;
+  background-repeat: no-repeat;
 }
 
 /*****align footer and set size and color*****/

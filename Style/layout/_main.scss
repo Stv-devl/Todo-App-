@@ -51,6 +51,7 @@ main {
     border-radius: 5px;
     box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
     background-color: var(--backgroundTodo);
+    transition: background-color 0.4s ease-in-out;
     margin-bottom: 36px;
 
     .circle {
@@ -73,6 +74,7 @@ main {
     width: 100%;
     border-radius: 5px;
     background-color: var(--backgroundTodo);
+    transition: background-color 0.4s ease-in-out;
     margin-bottom: 37px;
 
     .todo {
@@ -83,14 +85,27 @@ main {
       border-bottom: 1px solid rgba(194, 195, 214, 0.5);
       padding: 0 24px 0 24px;
 
-      button {
+      .btn {
         cursor: pointer;
         background: none;
         width: 24px;
         height: 24px;
         border-radius: 100%;
         border: 1px solid rgba(194, 195, 214, 0.5);
-        margin-right: 24px;
+      }
+
+      .text {
+        width: 80%;
+        margin-left: 24px;
+      }
+
+      .cross {
+        width: 10%;
+        height: 50px;
+        cursor: pointer;
+        background: none;
+        border-radius: 100%;
+        border: none;
       }
     }
 
@@ -134,5 +149,26 @@ main {
         }
       }
     }
+    /*****************************************interact with JS*****************************************/
+    .btnClicked {
+      color: rgb(168, 168, 168);
+      text-decoration: line-through;
+
+      .btn {
+        background-image: url(./..//..//images/icon-check.svg);
+        background-position: center;
+        background: linear-gradient(
+          to right,
+          hsl(192, 100%, 67%),
+          hsl(280, 87%, 65%)
+        );
+      }
+      .cross {
+        background-image: url(./..//..//images/icon-cross.svg);
+        background-position: bottom 15px right 20px;
+        background-repeat: no-repeat;
+      }
+    }
+    /************************************************************************************************/
   }
 }
