@@ -1,33 +1,44 @@
 //Variables
 const input = document.querySelector("input");
 const form = document.querySelector("form");
-const todosList = [];
 
-//get todo
-function getTodo() {
-  todosList.push(input.value);
-
-  addTodo();
+// Store function
+function storeList() {
+  window.localStorage.todoList = list.innerHTML;
 }
 
-//inject lign
+// Sdisplay fonction at reload
+function getTodos() {
+  if (window.localStorage.todoList) {
+    list.innerHTML = window.localStorage.todoList;
+  } else {
+    return;
+  }
+}
+
+//inject lign todo & html
 function addTodo() {
   list.innerHTML += `
   <li class="todo">
         <button class="btn"></button>
         ${input.value}</li>`;
 
-  console.log(todosList);
+  storeList();
 }
+
 /*************************************AddEventListener************************************/
 
+//when page is load send to storage
+window.addEventListener("load", getTodos);
+
+//sumbit todo
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   if (input.value === "") {
     return;
   } else {
-    getTodo(input.value);
+    addTodo(input.value);
     input.value = "";
   }
   return;
