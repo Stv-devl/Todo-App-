@@ -226,10 +226,12 @@ main .todo-list .list-footer-container #clear:hover {
 main .todo-list .btnClicked {
   color: rgb(168, 168, 168);
   text-decoration: line-through;
+  background-image: url(./..//..//images/icon-check.svg);
+  background-position: bottom 20px right 499px;
+  background-repeat: no-repeat;
 }
 main .todo-list .btnClicked .btn {
-  background-image: url(./..//..//images/icon-check.svg);
-  background-position: center;
+  opacity: 0.5;
   background: linear-gradient(to right, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
 }
 main .todo-list .btnClicked .cross {

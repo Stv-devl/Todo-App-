@@ -153,16 +153,19 @@ main {
     .btnClicked {
       color: rgb(168, 168, 168);
       text-decoration: line-through;
+      background-image: url(./..//..//images/icon-check.svg);
+      background-position: bottom 20px right 499px;
+      background-repeat: no-repeat;
 
       .btn {
-        background-image: url(./..//..//images/icon-check.svg);
-        background-position: center;
+        opacity: 0.5;
         background: linear-gradient(
           to right,
           hsl(192, 100%, 67%),
           hsl(280, 87%, 65%)
         );
       }
+
       .cross {
         background-image: url(./..//..//images/icon-cross.svg);
         background-position: bottom 15px right 20px;
