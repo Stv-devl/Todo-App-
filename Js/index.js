@@ -2,12 +2,11 @@
 const input = document.querySelector("input");
 const form = document.querySelector("form");
 const listing = document.querySelectorAll(".listing");
+let array = [];
 
 // Store function
 function storeList() {
   window.localStorage.todoList = list.innerHTML;
-
-  console.log(list);
 }
 
 // display fonction at reload
@@ -26,11 +25,26 @@ function settingTodo() {
   const todo = document.querySelectorAll(".todo");
   const cross = document.querySelectorAll(".cross");
 
+  /*
+  const arrayClicked = [];
+  const array = [];
+
+  for (let i = 0; i < todo.length; i++) {
+    let item = todo[i];
+
+    if (item.classList == "todo btnClicked") {
+      localStorage.todoListClicked = list.innerHTML;
+    }
+  }
+  */
+
+  /*
   displayNumber();
 
   function displayNumber() {
     numberDisplay.textContent = todo.length;
   }
+  */
 
   //for each btn
   btn.forEach((element) => {
@@ -41,6 +55,7 @@ function settingTodo() {
         storeList();
       } else {
         element.parentElement.classList.add("btnClicked");
+
         storeList();
       }
     });
@@ -51,6 +66,7 @@ function settingTodo() {
     element.addEventListener("click", (e) => {
       if (element.parentElement.classList.contains("btnClicked")) {
         element.parentElement.remove(list.innerHTML);
+
         storeList();
         /*    window.location.reload();*/
       } else {
@@ -62,15 +78,35 @@ function settingTodo() {
 
 //inject lign todo & html => send to internal storage
 function addTodo() {
-  list.innerHTML += `
-  <li class="todo">
+  const todo = document.querySelectorAll(".todo");
+
+  list.innerHTML += `<li class="todo" id="${todo.length + 1}">
+  <button class="btn"></button>
+  <p class="text"> ${input.value}</p>
+  <svg class="cross"></svg>
+</li>`;
+
+  let objJson = {
+    id: todo.length + 1,
+    name: input.value,
+    completed: false,
+  };
+
+  array.push(objJson);
+  localStorage.setItem("todosList", JSON.stringify(array));
+  display();
+}
+
+function display() {
+  localStorage.getItem("todosList");
+
+  /*
+  list.innerHTML += `<li class="todo" id="${todo.length + 1}">
         <button class="btn"></button>
         <p class="text"> ${input.value}</p>
         <svg class="cross"></svg>
   </li>`;
-
-  storeList();
-  settingTodo();
+  */
 }
 
 /*************************************AddEventListener************************************/
