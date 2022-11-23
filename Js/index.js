@@ -2,111 +2,57 @@
 const input = document.querySelector("input");
 const form = document.querySelector("form");
 const listing = document.querySelectorAll(".listing");
-let array = [];
 
-// Store function
-function storeList() {
-  window.localStorage.todoList = list.innerHTML;
+//local storage
+const LocalStorageList = "taskTodos";
+let todos = JSON.parse(localStorage.getItem(LocalStorageList)) || [];
+
+// create todo
+function creatTodo() {
+  let id = todos.length + 1;
+  return { id: id.toString(), name: input.value, completed: false };
 }
 
-// display fonction at reload
+// add todo in todos array
+function addTodo() {
+  todos.push(creatTodo());
+  saveToLocalstorage(todos);
+  displayTodo(todos);
+}
+
+//display todo
+function displayTodo(todos) {
+  let findList = todos.length - 1;
+
+  console.log(todos[findList].name);
+
+  list.innerHTML += `<li class="todo" id="${todos[findList].id}">
+  <button class="btn"></button>
+  <p class="text"> ${todos[findList].name}</p>
+  <svg class="cross"></svg>
+</li>`;
+}
+
+//display todo at reload
+
 function getTodos() {
-  if (window.localStorage.todoList) {
-    list.innerHTML = window.localStorage.todoList;
-    settingTodo();
+  if (window.localStorage.taskTodos) {
+    for (let i = 0; i < todos.length; i++) {
+      let item = todos[i];
+
+      list.innerHTML += `<li class="todo" id="${item.id}">
+        <button class="btn"></button>
+        <p class="text"> ${item.name}</p>
+        <svg class="cross"></svg>
+      </li>`;
+    }
   } else {
     return;
   }
 }
-
-// settingTodo
-function settingTodo() {
-  const btn = document.querySelectorAll(".btn");
-  const todo = document.querySelectorAll(".todo");
-  const cross = document.querySelectorAll(".cross");
-
-  /*
-  const arrayClicked = [];
-  const array = [];
-
-  for (let i = 0; i < todo.length; i++) {
-    let item = todo[i];
-
-    if (item.classList == "todo btnClicked") {
-      localStorage.todoListClicked = list.innerHTML;
-    }
-  }
-  */
-
-  /*
-  displayNumber();
-
-  function displayNumber() {
-    numberDisplay.textContent = todo.length;
-  }
-  */
-
-  //for each btn
-  btn.forEach((element) => {
-    element.addEventListener("click", (e) => {
-      if (element.parentElement.classList.contains("btnClicked")) {
-        element.parentElement.classList.remove("btnClicked");
-
-        storeList();
-      } else {
-        element.parentElement.classList.add("btnClicked");
-
-        storeList();
-      }
-    });
-  });
-
-  //for each cross => deleted
-  cross.forEach((element) => {
-    element.addEventListener("click", (e) => {
-      if (element.parentElement.classList.contains("btnClicked")) {
-        element.parentElement.remove(list.innerHTML);
-
-        storeList();
-        /*    window.location.reload();*/
-      } else {
-        return;
-      }
-    });
-  });
-}
-
-//inject lign todo & html => send to internal storage
-function addTodo() {
-  const todo = document.querySelectorAll(".todo");
-
-  list.innerHTML += `<li class="todo" id="${todo.length + 1}">
-  <button class="btn"></button>
-  <p class="text"> ${input.value}</p>
-  <svg class="cross"></svg>
-</li>`;
-
-  let objJson = {
-    id: todo.length + 1,
-    name: input.value,
-    completed: false,
-  };
-
-  array.push(objJson);
-  localStorage.setItem("todosList", JSON.stringify(array));
-  display();
-}
-
-function display() {
-  localStorage.getItem("todosList");
-
-  /*
-  list.innerHTML += `<li class="todo" id="${todo.length + 1}">
-        <button class="btn"></button>
-        <p class="text"> ${input.value}</p>
-        <svg class="cross"></svg>
-  </li>`;
-  */
+// save in local storage
+function saveToLocalstorage(todos) {
+  localStorage.setItem(LocalStorageList, JSON.stringify(todos));
 }
 
 /*************************************AddEventListener************************************/
