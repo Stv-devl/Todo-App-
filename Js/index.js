@@ -7,22 +7,22 @@ const listing = document.querySelectorAll(".listing");
 const LocalStorageList = "taskTodos";
 let todos = JSON.parse(localStorage.getItem(LocalStorageList)) || [];
 
-// create todo
+// create todo array with id, name and completed
 function createTodo() {
   let id = todos.length + 1;
   return { id: id.toString(), name: input.value, completed: false };
 }
 
-// add todo in todos array
+// add todo in todos array, save to storage, launch display and setting
 function addTodo() {
   todos.push(createTodo());
-  saveToLocalstorage(todos);
-  displayTodo(todos);
-  settingTodo(todos);
+  saveToLocalstorage();
+  displayTodo();
+  settingTodo();
 }
 
 //display todo
-function displayTodo(todos) {
+function displayTodo() {
   let listNumber = todos.length - 1;
 
   list.innerHTML += `<li class="todo" id="${todos[listNumber].id}">
@@ -33,7 +33,6 @@ function displayTodo(todos) {
 }
 
 //display todo at reload
-
 function getTodos() {
   if (window.localStorage.taskTodos) {
     for (let i = 0; i < todos.length; i++) {
@@ -45,22 +44,29 @@ function getTodos() {
         <svg class="cross"></svg>
       </li>`;
     }
-    settingTodo(todos);
+    settingTodo();
   } else {
     return;
   }
 }
 
 // save in local storage
-function saveToLocalstorage(todos) {
+function saveToLocalstorage() {
   localStorage.setItem(LocalStorageList, JSON.stringify(todos));
 }
 
 // settingTodo
-function settingTodo(todos) {
+function settingTodo() {
   const btn = document.querySelectorAll(".btn");
   const todo = document.querySelectorAll(".todo");
   const cross = document.querySelectorAll(".cross");
+
+  const newArr = todos.map((element) => {
+    if (element == "false") {
+      return "true";
+    }
+    return element;
+  });
 
   //for each btn
   btn.forEach((element) => {
@@ -69,7 +75,15 @@ function settingTodo(todos) {
         element.parentElement.classList.remove("btnClicked");
       } else {
         element.parentElement.classList.add("btnClicked");
+
+        let elementClass = element.parentElement.classList;
+        let elementId = element.parentElement.id;
+        let changeTodos = todos[elementId - 1].completed;
+
+        if (elementClass.contains("btnClicked")) {
+        }
       }
+      return;
     });
   });
 
@@ -83,7 +97,7 @@ function settingTodo(todos) {
 
         for (i = 0; i < todos.length; i++)
           if (todos[i].id == elementID) todos.splice(i, 1);
-        localStorage["taskTodos"] = JSON.stringify(todos);
+        saveToLocalstorage();
 
         return;
       }
