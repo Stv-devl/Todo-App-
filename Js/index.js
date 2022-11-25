@@ -44,11 +44,21 @@ function getTodos() {
         <p class="text"> ${item.name}</p>
         <svg class="cross"></svg>
       </li>`;
+
+      relaunchBtnCLicked(i);
+      settingTodo();
     }
-    settingTodo();
-  } else {
-    return;
   }
+  return;
+}
+
+//keep classList BtnClicked when reload
+function relaunchBtnCLicked(i) {
+  const todo = document.querySelectorAll(".todo");
+  if (todos[i].completed == true) {
+    todo[i].classList = "todo btnClicked";
+  }
+  return;
 }
 
 // save data to local storage
