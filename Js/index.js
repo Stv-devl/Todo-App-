@@ -10,7 +10,7 @@ let todos = JSON.parse(localStorage.getItem(LocalStorageList)) || [];
 // create todo array with id, name and completed
 function createTodo() {
   let id = todos.length + 1;
-  return { id: id.toString(), name: input.value, completed: false };
+  return { id: id, name: input.value, completed: false };
 }
 
 // add todo in todos array, save to storage, launch display and setting
@@ -32,9 +32,10 @@ function displayTodo() {
 </li>`;
 }
 
-//display todo at reload
+//display todo at reload && when we delete li
 function getTodos() {
   if (window.localStorage.taskTodos) {
+    list.innerHTML = ""; // when we delete 1 li we will delete list.innerHtml for write it again
     for (let i = 0; i < todos.length; i++) {
       let item = todos[i];
 
@@ -50,59 +51,57 @@ function getTodos() {
   }
 }
 
-// save in local storage
+// save data to local storage
 function saveToLocalstorage() {
   localStorage.setItem(LocalStorageList, JSON.stringify(todos));
 }
 
-// settingTodo
+// settingTodo for check button and delete todos
 function settingTodo() {
   const btn = document.querySelectorAll(".btn");
-  const todo = document.querySelectorAll(".todo");
   const cross = document.querySelectorAll(".cross");
 
-  const newArr = todos.map((element) => {
-    if (element == "false") {
-      return "true";
-    }
-    return element;
-  });
-
-  //for each btn
+  //for each btn => when we check button : completed become "true", and we add btnClicked to classList. => when we uncheck completed become "false" and we remove btnClicked to class list
   btn.forEach((element) => {
     element.addEventListener("click", (e) => {
+      let elementId = element.parentElement.id;
+
       if (element.parentElement.classList.contains("btnClicked")) {
         element.parentElement.classList.remove("btnClicked");
+        todos[elementId - 1].completed = false;
+        saveToLocalstorage();
       } else {
         element.parentElement.classList.add("btnClicked");
-
-        let elementClass = element.parentElement.classList;
-        let elementId = element.parentElement.id;
-        let changeTodos = todos[elementId - 1].completed;
-
-        if (elementClass.contains("btnClicked")) {
-        }
+        todos[elementId - 1].completed = true;
+        saveToLocalstorage();
       }
-      return;
     });
   });
-
-  //for each cross => deleted
+  //for each cross => when we click on the cross we delete the innerHtml, and we remove array from localStorage
   cross.forEach((element) => {
     element.addEventListener("click", (e) => {
       if (element.parentElement.classList.contains("btnClicked")) {
         element.parentElement.remove(list.innerHTML);
 
-        let elementID = element.parentElement.id;
+        let elementId = element.parentElement.id;
 
-        for (i = 0; i < todos.length; i++)
-          if (todos[i].id == elementID) todos.splice(i, 1);
+        todos.splice(elementId - 1, 1);
+
+        updateId();
         saveToLocalstorage();
+        getTodos(); //we relaunch getTodos for change Id number in html after delete 1 todo
 
         return;
       }
     });
   });
+}
+
+// update Id number when we remove a todo from list
+function updateId() {
+  for (i = 0; i < todos.length; i++) {
+    todos[i].id = i + 1;
+  }
 }
 
 /*************************************AddEventListener************************************/
