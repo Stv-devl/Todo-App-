@@ -45,7 +45,6 @@ function getTodos() {
     all.classList.contains("listingClicked")
   ) {
     for (let i = 0; i < todos.length; i++) {
-      //for each <li></li>
       list.innerHTML += `<li class="todo" id="${todos[i].id}">
         <button class="btn"></button>
         <p class="text"> ${todos[i].name}</p>
@@ -56,6 +55,7 @@ function getTodos() {
       settingTodo();
     }
     return;
+
     //active
   } else if (
     window.localStorage.taskTodos &&
@@ -66,8 +66,6 @@ function getTodos() {
     });
 
     for (let i = 0; i < filterFalse.length; i++) {
-      //for each <li></li>
-
       list.innerHTML += `<li class="todo" id="${filterFalse[i].id}">
         <button class="btn"></button>
         <p class="text"> ${filterFalse[i].name}</p>
@@ -76,6 +74,7 @@ function getTodos() {
 
       settingTodo();
     }
+
     //completed
   } else if (
     window.localStorage.taskTodos &&
@@ -86,8 +85,8 @@ function getTodos() {
     });
 
     for (let i = 0; i < todos.length; i++) {
-      //for each <li></li>
-      console.log(filterTrue);
+      console.log(filterTrue[i].id);
+
       list.innerHTML += `<li class="todo" id="${filterTrue[i].id}">
         <button class="btn"></button>
         <p class="text"> ${filterTrue[i].name}</p>
@@ -100,15 +99,21 @@ function getTodos() {
   }
 }
 
-//when the page is reload we have to keep classList = "todo BtnClicked", so if completed is true we add btnClicked at reload
+//when the page is reload we have to keep classList = "todo BtnClicked", so if completed is true we add btnClicked at reload. And also working when we click on completed button
 function relaunchBtnCLicked(i) {
   const todo = document.querySelectorAll(".todo");
-  if (todos[i].completed == true) {
-    todo[i].classList = "todo btnClicked";
+  const filterTrue = todos.filter(function (trueFilter) {
+    return trueFilter.completed == true;
+  });
+
+  if (todos[i].completed == true && all.classList.contains("listingClicked")) {
+    todo[i].classList.add("btnClicked");
+  } else if (
+    todos[i].completed == true &&
+    completed.classList.contains("listingClicked")
+  ) {
+    todo[i].classList.add("btnClicked");
   }
-  /*else if (todos[0] == true) {
-    todo[0].classList = "todo btnClicked";
-  }*/
   return;
 }
 
@@ -178,7 +183,6 @@ function updateId() {
 //filter todo listing : All, only Active and only Completed
 listing.forEach((element) => {
   element.addEventListener("click", (e) => {
-    /* getTodos();*/
     listing.forEach((element) => {
       element.classList.remove("listingClicked");
     });
@@ -209,7 +213,25 @@ clear.addEventListener("click", (e) => {
 });
 
 /*************************************AddEventListener************************************/
-
+/*all.addEventListener("click", (element) => {
+  element.target.classList.add("listingClicked");
+  active.classList.remove("listingClicked");
+  completed.classList.remove("listingClicked");
+  getTodos();
+});
+active.addEventListener("click", (element) => {
+  element.target.classList.add("listingClicked");
+  all.classList.remove("listingClicked");
+  completed.classList.remove("listingClicked");
+  getTodos();
+});
+completed.addEventListener("click", (element) => {
+  element.target.classList.add("listingClicked");
+  active.classList.remove("listingClicked");
+  all.classList.remove("listingClicked");
+  getTodos();
+});
+*/
 //when page is reload send start launch getTodo()
 window.addEventListener("load", getTodos);
 
