@@ -15,13 +15,6 @@ function createTodo() {
   return { id: id, name: input.value, completed: false };
 }
 
-//function calculate
-function calculate() {
-  for (let i = 0; i < todos.length; i++) {
-    let item = todos[i];
-  }
-}
-
 // add todo in todos array, save to storage, launch display and setting functions
 function createTodoArray() {
   todos.push(createTodo());
@@ -44,16 +37,60 @@ function displayTodo() {
 
 //display todo at reload && when we delete one <li></li>
 function getTodos() {
-  if (window.localStorage.taskTodos) {
-    list.innerHTML = ""; // when we delete one <li></li> we will delete all the <li></li> for write it again, if not it's write 2 times
+  list.innerHTML = ""; // when we delete one <li></li> we will delete all the <li></li> for write it again, if not it's write 2 times
+
+  //all
+  if (
+    window.localStorage.taskTodos &&
+    all.classList.contains("listingClicked")
+  ) {
+    for (let i = 0; i < todos.length; i++) {
+      //for each <li></li>
+      list.innerHTML += `<li class="todo" id="${todos[i].id}">
+        <button class="btn"></button>
+        <p class="text"> ${todos[i].name}</p>
+        <svg class="cross"></svg>
+      </li>`;
+
+      relaunchBtnCLicked(i);
+      settingTodo();
+    }
+    return;
+    //active
+  } else if (
+    window.localStorage.taskTodos &&
+    active.classList.contains("listingClicked")
+  ) {
+    const filterFalse = todos.filter(function (falseTrue) {
+      return falseTrue.completed == false;
+    });
+
+    for (let i = 0; i < filterFalse.length; i++) {
+      //for each <li></li>
+
+      list.innerHTML += `<li class="todo" id="${filterFalse[i].id}">
+        <button class="btn"></button>
+        <p class="text"> ${filterFalse[i].name}</p>
+        <svg class="cross"></svg>
+      </li>`;
+
+      settingTodo();
+    }
+    //completed
+  } else if (
+    window.localStorage.taskTodos &&
+    completed.classList.contains("listingClicked")
+  ) {
+    const filterTrue = todos.filter(function (trueFilter) {
+      return trueFilter.completed == true;
+    });
 
     for (let i = 0; i < todos.length; i++) {
-      let item = todos[i];
-
       //for each <li></li>
-      list.innerHTML += `<li class="todo" id="${item.id}">
+      console.log(filterTrue);
+      list.innerHTML += `<li class="todo" id="${filterTrue[i].id}">
         <button class="btn"></button>
-        <p class="text"> ${item.name}</p>
+        <p class="text"> ${filterTrue[i].name}</p>
         <svg class="cross"></svg>
       </li>`;
 
@@ -61,7 +98,6 @@ function getTodos() {
       settingTodo();
     }
   }
-  return;
 }
 
 //when the page is reload we have to keep classList = "todo BtnClicked", so if completed is true we add btnClicked at reload
@@ -70,6 +106,9 @@ function relaunchBtnCLicked(i) {
   if (todos[i].completed == true) {
     todo[i].classList = "todo btnClicked";
   }
+  /*else if (todos[0] == true) {
+    todo[0].classList = "todo btnClicked";
+  }*/
   return;
 }
 
@@ -129,13 +168,45 @@ function settingTodo() {
     });
   });
 }
-
 // we update the id number after removing a todo from list
 function updateId() {
   for (i = 0; i < todos.length; i++) {
     todos[i].id = i + 1;
   }
 }
+
+//filter todo listing : All, only Active and only Completed
+listing.forEach((element) => {
+  element.addEventListener("click", (e) => {
+    /* getTodos();*/
+    listing.forEach((element) => {
+      element.classList.remove("listingClicked");
+    });
+    if (element.classList.contains("listingClicked")) {
+      element.classList.remove("listingClicked");
+      getTodos();
+    } else {
+      element.classList.add("listingClicked");
+      getTodos();
+    }
+  });
+});
+
+//clear completed button
+clear.addEventListener("click", (e) => {
+  const filterTrue = todos.filter(function (falseTrue) {
+    return falseTrue.completed == true;
+  });
+
+  for (let j = 0; j < filterTrue.length; j++) {
+    if (falseTrue.completed == true) {
+      console.log(filterTrue[j]);
+      delete filterTrue[j];
+    }
+
+    saveToLocalstorage();
+  }
+});
 
 /*************************************AddEventListener************************************/
 
