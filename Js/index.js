@@ -7,12 +7,10 @@ const listing = document.querySelectorAll(".listing");
 const LocalStorageList = "taskTodos";
 let todos = JSON.parse(localStorage.getItem(LocalStorageList)) || [];
 
-displayNumberOfTodo();
-
 // create todo array with id, name and completed statut
 function createTodo() {
   let id = todos.length + 1;
-  return { id: id, name: input.value, completed: false };
+  return { id: id.toString(), name: input.value, completed: false };
 }
 
 // add todo in todos array, save to storage, launch display and setting functions
@@ -37,9 +35,10 @@ function displayTodo() {
 
 //display todo at reload && when we delete one <li></li>
 function getTodos() {
+  displayNumberOfTodo();
   list.innerHTML = ""; // when we delete one <li></li> we will delete all the <li></li> for write it again, if not it's write 2 times
 
-  //all
+  //filter : all
   if (
     window.localStorage.taskTodos &&
     all.classList.contains("listingClicked")
@@ -56,7 +55,7 @@ function getTodos() {
     }
     return;
 
-    //active
+    //filter : active
   } else if (
     window.localStorage.taskTodos &&
     active.classList.contains("listingClicked")
@@ -75,7 +74,7 @@ function getTodos() {
       settingTodo();
     }
 
-    //completed
+    //filter : completed
   } else if (
     window.localStorage.taskTodos &&
     completed.classList.contains("listingClicked")
@@ -84,9 +83,7 @@ function getTodos() {
       return trueFilter.completed == true;
     });
 
-    for (let i = 0; i < todos.length; i++) {
-      console.log(filterTrue[i].id);
-
+    for (let i = 0; i < filterTrue.length; i++) {
       list.innerHTML += `<li class="todo" id="${filterTrue[i].id}">
         <button class="btn"></button>
         <p class="text"> ${filterTrue[i].name}</p>
@@ -102,14 +99,11 @@ function getTodos() {
 //when the page is reload we have to keep classList = "todo BtnClicked", so if completed is true we add btnClicked at reload. And also working when we click on completed button
 function relaunchBtnCLicked(i) {
   const todo = document.querySelectorAll(".todo");
-  const filterTrue = todos.filter(function (trueFilter) {
-    return trueFilter.completed == true;
-  });
 
   if (todos[i].completed == true && all.classList.contains("listingClicked")) {
     todo[i].classList.add("btnClicked");
   } else if (
-    todos[i].completed == true &&
+    window.localStorage.taskTodos &&
     completed.classList.contains("listingClicked")
   ) {
     todo[i].classList.add("btnClicked");
@@ -198,40 +192,21 @@ listing.forEach((element) => {
 
 //clear completed button
 clear.addEventListener("click", (e) => {
-  const filterTrue = todos.filter(function (falseTrue) {
-    return falseTrue.completed == true;
+  const filterTrue = todos.filter(function (trueFilter) {
+    return trueFilter.completed == true;
   });
 
-  for (let j = 0; j < filterTrue.length; j++) {
-    if (falseTrue.completed == true) {
-      console.log(filterTrue[j]);
-      delete filterTrue[j];
-    }
+  for (let i = 0; i < filterTrue.length; i++) {
+    todos.splice(filterTrue[i].id - 1, 1);
 
+    updateId();
     saveToLocalstorage();
+    getTodos(); //we launch getTodos for change id number in the <li></li> after delete 1 todo
+    displayNumberOfTodo();
   }
 });
 
 /*************************************AddEventListener************************************/
-/*all.addEventListener("click", (element) => {
-  element.target.classList.add("listingClicked");
-  active.classList.remove("listingClicked");
-  completed.classList.remove("listingClicked");
-  getTodos();
-});
-active.addEventListener("click", (element) => {
-  element.target.classList.add("listingClicked");
-  all.classList.remove("listingClicked");
-  completed.classList.remove("listingClicked");
-  getTodos();
-});
-completed.addEventListener("click", (element) => {
-  element.target.classList.add("listingClicked");
-  active.classList.remove("listingClicked");
-  all.classList.remove("listingClicked");
-  getTodos();
-});
-*/
 //when page is reload send start launch getTodo()
 window.addEventListener("load", getTodos);
 
