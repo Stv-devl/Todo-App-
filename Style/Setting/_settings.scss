@@ -25,6 +25,7 @@ body {
   background-repeat: no-repeat;
   background-position: top;
   background-size: 100%;
+
   font-size: 18px;
   font-weight: 400;
   color: var(--textTodoFooter);
@@ -51,14 +52,22 @@ h1 {
   color: $white;
 }
 
-h2 {
-  text-transform: uppercase;
+.text {
+  font-size: 18px;
+  font-weight: 400;
   color: var(--textTodo);
 }
 
 p {
   font-size: 14px;
   font-weight: 700;
+}
+
+#itemDisplay,
+#clear,
+#drag {
+  font-size: 14px;
+  font-weight: 400;
 }
 
 /***************************Setting mixxin***************************/

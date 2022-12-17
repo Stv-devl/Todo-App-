@@ -49,7 +49,7 @@ main {
     height: 64px;
     padding-left: 24px;
     border-radius: 5px;
-    box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+    box-shadow: 0px 35px 50px -15px var(--BoxShadow);
     background-color: var(--backgroundTodo);
     transition: background-color 0.4s ease-in-out;
     margin-bottom: 36px;
@@ -61,7 +61,7 @@ main {
       border: 1px solid rgba(194, 195, 214, 0.5);
     }
     input {
-      padding-left: 50px;
+      padding-left: 25px;
       width: 100%;
       border: none;
       font-size: 18px;
@@ -76,6 +76,7 @@ main {
     background-color: var(--backgroundTodo);
     transition: background-color 0.4s ease-in-out;
     margin-bottom: 37px;
+    box-shadow: 0px 35px 50px -15px var(--BoxShadow);
 
     .todo {
       display: flex;
@@ -92,8 +93,16 @@ main {
         height: 24px;
         border-radius: 100%;
         border: 1px solid rgba(194, 195, 214, 0.5);
-      }
 
+        &:hover {
+          border: 1px solid rgba(194, 195, 214, 0.5);
+        }
+
+        .check {
+          width: 100%;
+          height: 100%;
+        }
+      }
       .text {
         width: 80%;
         margin-left: 24px;
@@ -102,7 +111,6 @@ main {
       .cross {
         width: 10%;
         height: 50px;
-        cursor: pointer;
         background: none;
         border-radius: 100%;
         border: none;
@@ -124,20 +132,20 @@ main {
           cursor: pointer;
 
           &:hover {
-            color: $BrightBlue;
+            color: var(--textTodoHover);
           }
         }
 
         #active {
           cursor: pointer;
           &:hover {
-            color: $BrightBlue;
+            color: var(--textTodoHover);
           }
         }
         #completed {
           cursor: pointer;
           &:hover {
-            color: $BrightBlue;
+            color: var(--textTodoHover);
           }
         }
       }
@@ -145,32 +153,43 @@ main {
       #clear {
         cursor: pointer;
         &:hover {
-          color: $BrightBlue;
+          color: var(--textTodoHover);
         }
       }
     }
     /*****************************************interact with JS*****************************************/
     .btnClicked {
-      color: rgb(168, 168, 168);
-      text-decoration: line-through;
-      background-image: url(./..//..//images/icon-check.svg);
-      background-position: bottom 20px right 499px;
-      background-repeat: no-repeat;
-
       .btn {
-        opacity: 0.5;
+        opacity: 0.9;
         background: linear-gradient(
           to right,
           hsl(192, 100%, 67%),
           hsl(280, 87%, 65%)
         );
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      }
+
+      .check {
+        background-image: url(./..//..//images/icon-check.svg);
+        background-position: bottom 6px right 5px;
+        background-repeat: no-repeat;
+      }
+
+      .text {
+        text-decoration: line-through;
+        color: var(--textTodoComplete);
       }
 
       .cross {
+        cursor: pointer;
         background-image: url(./..//..//images/icon-cross.svg);
-        background-position: bottom 15px right 20px;
+        background-position: bottom 15px right 0px;
         background-repeat: no-repeat;
       }
+    }
+
+    .listingClicked {
+      color: $BrightBlue;
     }
     /************************************************************************************************/
   }

@@ -10,6 +10,7 @@
   --textTodoFooter: hsl(235deg, 9%, 61%);
   --textTodo: hsl(235deg, 19%, 35%);
   --textTodoHover: hsl(235deg, 19%, 35%);
+  --BoxShadow: rgba(194, 195, 214, 0.5);
 }
 
 .dark {
@@ -19,6 +20,7 @@
   --textTodoFooter: hsl(235deg, 16%, 42%);
   --textTodo: hsl(235deg, 39%, 85%);
   --textTodoHover: hsl(236deg, 32%, 92%);
+  --BoxShadow: rgba(0, 0, 0, 0.5);
 }
 
 /**********************************************************************/
@@ -65,14 +67,22 @@ h1 {
   color: hsl(0deg, 0%, 100%);
 }
 
-h2 {
-  text-transform: uppercase;
+.text {
+  font-size: 18px;
+  font-weight: 400;
   color: var(--textTodo);
 }
 
 p {
   font-size: 14px;
   font-weight: 700;
+}
+
+#itemDisplay,
+#clear,
+#drag {
+  font-size: 14px;
+  font-weight: 400;
 }
 
 /***************************Setting mixxin***************************/
@@ -130,7 +140,7 @@ main .input-wrapper {
   height: 64px;
   padding-left: 24px;
   border-radius: 5px;
-  box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+  box-shadow: 0px 35px 50px -15px var(--BoxShadow);
   background-color: var(--backgroundTodo);
   transition: background-color 0.4s ease-in-out;
   margin-bottom: 36px;
@@ -142,7 +152,7 @@ main .input-wrapper .circle {
   border: 1px solid rgba(194, 195, 214, 0.5);
 }
 main .input-wrapper input {
-  padding-left: 50px;
+  padding-left: 25px;
   width: 100%;
   border: none;
   font-size: 18px;
@@ -155,6 +165,7 @@ main .todo-list {
   background-color: var(--backgroundTodo);
   transition: background-color 0.4s ease-in-out;
   margin-bottom: 37px;
+  box-shadow: 0px 35px 50px -15px var(--BoxShadow);
   /*****************************************interact with JS*****************************************/
   /************************************************************************************************/
 }
@@ -174,6 +185,13 @@ main .todo-list .todo .btn {
   border-radius: 100%;
   border: 1px solid rgba(194, 195, 214, 0.5);
 }
+main .todo-list .todo .btn:hover {
+  border: 1px solid rgba(194, 195, 214, 0.5);
+}
+main .todo-list .todo .btn .check {
+  width: 100%;
+  height: 100%;
+}
 main .todo-list .todo .text {
   width: 80%;
   margin-left: 24px;
@@ -181,7 +199,6 @@ main .todo-list .todo .text {
 main .todo-list .todo .cross {
   width: 10%;
   height: 50px;
-  cursor: pointer;
   background: none;
   border-radius: 100%;
   border: none;
@@ -203,41 +220,48 @@ main .todo-list .list-footer-container .list-footer-wrapper #all {
   cursor: pointer;
 }
 main .todo-list .list-footer-container .list-footer-wrapper #all:hover {
-  color: hsl(220deg, 98%, 61%);
+  color: var(--textTodoHover);
 }
 main .todo-list .list-footer-container .list-footer-wrapper #active {
   cursor: pointer;
 }
 main .todo-list .list-footer-container .list-footer-wrapper #active:hover {
-  color: hsl(220deg, 98%, 61%);
+  color: var(--textTodoHover);
 }
 main .todo-list .list-footer-container .list-footer-wrapper #completed {
   cursor: pointer;
 }
 main .todo-list .list-footer-container .list-footer-wrapper #completed:hover {
-  color: hsl(220deg, 98%, 61%);
+  color: var(--textTodoHover);
 }
 main .todo-list .list-footer-container #clear {
   cursor: pointer;
 }
 main .todo-list .list-footer-container #clear:hover {
-  color: hsl(220deg, 98%, 61%);
-}
-main .todo-list .btnClicked {
-  color: rgb(168, 168, 168);
-  text-decoration: line-through;
-  background-image: url(./..//..//images/icon-check.svg);
-  background-position: bottom 20px right 499px;
-  background-repeat: no-repeat;
+  color: var(--textTodoHover);
 }
 main .todo-list .btnClicked .btn {
-  opacity: 0.5;
+  opacity: 0.9;
   background: linear-gradient(to right, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+main .todo-list .btnClicked .check {
+  background-image: url(./..//..//images/icon-check.svg);
+  background-position: bottom 6px right 5px;
+  background-repeat: no-repeat;
+}
+main .todo-list .btnClicked .text {
+  text-decoration: line-through;
+  color: var(--textTodoComplete);
 }
 main .todo-list .btnClicked .cross {
+  cursor: pointer;
   background-image: url(./..//..//images/icon-cross.svg);
-  background-position: bottom 15px right 20px;
+  background-position: bottom 15px right 0px;
   background-repeat: no-repeat;
+}
+main .todo-list .listingClicked {
+  color: hsl(220deg, 98%, 61%);
 }
 
 /*****align footer and set size and color*****/

@@ -27,7 +27,7 @@ function displayTodo() {
   let listNumber = todos.length - 1;
 
   list.innerHTML += `<li class="todo" id="${todos[listNumber].id}">
-  <button class="btn"></button>
+  <button class="btn"><svg class="check"></svg></button>
   <p class="text"> ${todos[listNumber].name}</p>
   <svg class="cross"></svg>
 </li>`;
@@ -45,7 +45,7 @@ function getTodos() {
   ) {
     for (let i = 0; i < todos.length; i++) {
       list.innerHTML += `<li class="todo" id="${todos[i].id}">
-        <button class="btn"></button>
+      <button class="btn"><svg class="check"></svg></button>
         <p class="text"> ${todos[i].name}</p>
         <svg class="cross"></svg>
       </li>`;
@@ -66,7 +66,7 @@ function getTodos() {
 
     for (let i = 0; i < filterFalse.length; i++) {
       list.innerHTML += `<li class="todo" id="${filterFalse[i].id}">
-        <button class="btn"></button>
+      <button class="btn"><svg class="check"></svg></button>
         <p class="text"> ${filterFalse[i].name}</p>
         <svg class="cross"></svg>
       </li>`;
@@ -85,7 +85,7 @@ function getTodos() {
 
     for (let i = 0; i < filterTrue.length; i++) {
       list.innerHTML += `<li class="todo" id="${filterTrue[i].id}">
-        <button class="btn"></button>
+  <button class="btn"><svg class="check"></svg></button>
         <p class="text"> ${filterTrue[i].name}</p>
         <svg class="cross"></svg>
       </li>`;

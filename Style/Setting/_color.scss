@@ -17,6 +17,7 @@ $textTodoCompleteLight: hsla(233, 11%, 84%, 1); //text todo complete
 $textTodoFooterLight: hsla(235, 9%, 61%, 1); //text todo footer
 $textTodoLight: hsla(235, 19%, 35%, 1); //text todo
 $textHoverLight: hsla(235, 19%, 35%, 1); //text Hover
+$BoxShadowLight: rgba(194, 195, 214, 0.5); //box Shadow
 
 // Dark Theme
 $backgroundDark: hsl(235, 21%, 11%); //background
@@ -25,6 +26,7 @@ $textTodoCompleteDark: hsla(233, 14%, 35%, 1); //text todo complete
 $textTodoFooterDark: hsla(235, 16%, 42%, 1); //text todo footer
 $textTodoDark: hsla(235, 39%, 85%, 1); //text todo
 $textHoverDark: hsla(236, 32%, 92%, 1); //text Hover
+$BoxShadowDark: rgba(0, 0, 0, 0.5); //box Shadow
 
 /***************************Setting body switch***************************/
 
@@ -35,6 +37,7 @@ $textHoverDark: hsla(236, 32%, 92%, 1); //text Hover
   --textTodoFooter: #{$textTodoFooterLight};
   --textTodo: #{$textTodoLight};
   --textTodoHover: #{$textHoverLight};
+  --BoxShadow: #{$BoxShadowLight};
 }
 
 .dark {
@@ -44,4 +47,5 @@ $textHoverDark: hsla(236, 32%, 92%, 1); //text Hover
   --textTodoFooter: #{$textTodoFooterDark};
   --textTodo: #{$textTodoDark};
   --textTodoHover: #{$textHoverDark};
+  --BoxShadow: #{$BoxShadowDark};
 }
