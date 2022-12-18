@@ -10,6 +10,12 @@ main {
   width: 541px;
   margin: 0 auto;
 
+  /********************Media********************/
+  @media screen and (max-width: 570px) {
+    width: 327px;
+  }
+  /*********************************************/
+
   .nav-container {
     @include row;
     align-items: center;
@@ -52,13 +58,26 @@ main {
     box-shadow: 0px 35px 50px -15px var(--BoxShadow);
     background-color: var(--backgroundTodo);
     transition: background-color 0.4s ease-in-out;
-    margin-bottom: 36px;
+    margin-bottom: 24px;
+
+    /********************Media********************/
+    @media screen and (max-width: 570px) {
+      width: 327px;
+    }
+    /*********************************************/
 
     .circle {
       width: 24px;
       height: 24px;
       border-radius: 100%;
       border: 1px solid rgba(194, 195, 214, 0.5);
+
+      /********************Media********************/
+      @media screen and (max-width: 570px) {
+        width: 20px;
+        height: 20px;
+      }
+      /*********************************************/
     }
     input {
       padding-left: 25px;
@@ -67,6 +86,12 @@ main {
       font-size: 18px;
       color: var(--textTodo);
       background: none;
+
+      /********************Media********************/
+      @media screen and (max-width: 570px) {
+        font-size: 14px;
+      }
+      /*********************************************/
     }
   }
 
@@ -87,6 +112,7 @@ main {
       padding: 0 24px 0 24px;
 
       .btn {
+        position: relative;
         cursor: pointer;
         background: none;
         width: 24px;
@@ -94,10 +120,57 @@ main {
         border-radius: 100%;
         border: 1px solid rgba(194, 195, 214, 0.5);
 
-        &:hover {
-          border: 1px solid rgba(194, 195, 214, 0.5);
+        /********************Media********************/
+        @media screen and (max-width: 570px) {
+          width: 20px;
+          height: 20px;
         }
+        /*********************************************/
 
+        /*************add hover with linear gradient*************/
+        &:hover {
+          &:before {
+            content: "";
+            position: relative;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border-radius: 100%;
+            background: var(--backgroundTodo);
+            transform: translate(-1px, -1px);
+            z-index: 2;
+
+            /********************Media********************/
+            @media screen and (max-width: 570px) {
+              width: 20px;
+              height: 20px;
+              transform: translate(-1px, -1px);
+            }
+            /*********************************************/
+          }
+          &:after {
+            content: "";
+            position: relative;
+            display: inline-block;
+            width: 27px;
+            height: 27px;
+            border-radius: 100%;
+            background: linear-gradient(
+              to right,
+              hsl(192, 100%, 67%),
+              hsl(280, 87%, 65%)
+            );
+            transform: translate(-2.5px, -55px);
+            z-index: 1;
+            /********************Media********************/
+            @media screen and (max-width: 570px) {
+              width: 23px;
+              height: 23px;
+              transform: translate(-2.3px, -47.3px);
+            }
+            /*********************************************/
+          }
+        }
         .check {
           width: 100%;
           height: 100%;
@@ -124,24 +197,54 @@ main {
       justify-content: space-between;
       padding: 0 24px 0 24px;
 
+      /********************Media********************/
+      @media screen and (max-width: 570px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        column-gap: 80px;
+        grid-template-areas:
+          "item clear"
+          "footer footer";
+        margin: 0 auto;
+        padding: 0;
+
+        #itemDisplay {
+          grid-area: item;
+          padding-top: 18px;
+          padding-left: 25px;
+        }
+        #clear {
+          grid-area: clear;
+          padding-top: 18px;
+          padding-right: 25px;
+        }
+        .list-footer-wrapper {
+          grid-area: footer;
+          width: 327px;
+          height: 48px;
+          border-radius: 5px;
+          margin-top: 50px;
+          background-color: var(--backgroundTodo);
+        }
+      }
+
+      #drag {
+        margin-top: 5px;
+
+        /********************Media********************/
+        @media screen and (max-width: 570px) {
+          margin-top: 50px;
+        }
+      }
+      /*********************************************/
+
       .list-footer-wrapper {
         @include row;
         gap: 18px;
 
-        #all {
-          cursor: pointer;
-
-          &:hover {
-            color: var(--textTodoHover);
-          }
-        }
-
-        #active {
-          cursor: pointer;
-          &:hover {
-            color: var(--textTodoHover);
-          }
-        }
+        #all,
+        #active,
         #completed {
           cursor: pointer;
           &:hover {
@@ -149,7 +252,6 @@ main {
           }
         }
       }
-
       #clear {
         cursor: pointer;
         &:hover {
@@ -167,13 +269,33 @@ main {
           hsl(280, 87%, 65%)
         );
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        &:hover {
+          background: linear-gradient(
+            to right,
+            hsl(192, 100%, 67%),
+            hsl(280, 87%, 65%)
+          );
+          &:before {
+            display: none;
+          }
+          &:after {
+            display: none;
+          }
+        }
       }
 
       .check {
         background-image: url(./..//..//images/icon-check.svg);
-        background-position: bottom 6px right 5px;
+        background-position: bottom 6.8px right 5.5px;
         background-repeat: no-repeat;
+
+        /********************Media********************/
+        @media screen and (max-width: 570px) {
+          background-position: bottom 5px right 2.8px;
+        }
       }
+      /*********************************************/
 
       .text {
         text-decoration: line-through;

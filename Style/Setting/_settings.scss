@@ -25,17 +25,11 @@ body {
   background-repeat: no-repeat;
   background-position: top;
   background-size: 100%;
-
   font-size: 18px;
   font-weight: 400;
   color: var(--textTodoFooter);
   transition: background-color 0.4s ease-in-out;
   transition: background-image 0.4s ease-in-out;
-
-  /********************Media********************/
-  @media screen and (max-width: 761px) {
-  }
-  /*********************************************/
 }
 
 /*************interact with JS***************/
@@ -49,22 +43,51 @@ h1 {
   font-size: 40px;
   font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 15px;
   color: $white;
+
+  /********************Media********************/
+  @media screen and (max-width: 570px) {
+    font-size: 30px;
+    letter-spacing: 10px;
+  }
+  /*********************************************/
 }
 
 .text {
   font-size: 18px;
   font-weight: 400;
   color: var(--textTodo);
+
+  /********************Media********************/
+  @media screen and (max-width: 570px) {
+    font-size: 14px;
+  }
+  /*********************************************/
 }
 
 p {
   font-size: 14px;
   font-weight: 700;
+
+  /********************Media********************/
+  @media screen and (max-width: 570px) {
+    font-weight: 400;
+  }
+  /*********************************************/
 }
 
 #itemDisplay,
-#clear,
+#clear {
+  font-size: 14px;
+  font-weight: 400;
+
+  /********************Media********************/
+  @media screen and (max-width: 570px) {
+    font-size: 12px;
+  }
+  /*********************************************/
+}
 #drag {
   font-size: 14px;
   font-weight: 400;

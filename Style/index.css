@@ -50,9 +50,8 @@ body {
   color: var(--textTodoFooter);
   transition: background-color 0.4s ease-in-out;
   transition: background-image 0.4s ease-in-out;
-  /********************Media********************/
-  /*********************************************/
 }
+
 /*************interact with JS***************/
 .dark {
   background-image: url(..//..//images/bg-desktop-dark.jpg);
@@ -64,22 +63,57 @@ h1 {
   font-size: 40px;
   font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 15px;
   color: hsl(0deg, 0%, 100%);
+  /********************Media********************/
+  /*********************************************/
+}
+@media screen and (max-width: 570px) {
+  h1 {
+    font-size: 30px;
+    letter-spacing: 10px;
+  }
 }
 
 .text {
   font-size: 18px;
   font-weight: 400;
   color: var(--textTodo);
+  /********************Media********************/
+  /*********************************************/
+}
+@media screen and (max-width: 570px) {
+  .text {
+    font-size: 14px;
+  }
 }
 
 p {
   font-size: 14px;
   font-weight: 700;
+  /********************Media********************/
+  /*********************************************/
+}
+@media screen and (max-width: 570px) {
+  p {
+    font-weight: 400;
+  }
 }
 
 #itemDisplay,
-#clear,
+#clear {
+  font-size: 14px;
+  font-weight: 400;
+  /********************Media********************/
+  /*********************************************/
+}
+@media screen and (max-width: 570px) {
+  #itemDisplay,
+#clear {
+    font-size: 12px;
+  }
+}
+
 #drag {
   font-size: 14px;
   font-weight: 400;
@@ -103,7 +137,14 @@ main {
   min-height: 100vh;
   width: 541px;
   margin: 0 auto;
+  /********************Media********************/
+  /*********************************************/
   /******************************************/
+}
+@media screen and (max-width: 570px) {
+  main {
+    width: 327px;
+  }
 }
 main .nav-container {
   display: flex;
@@ -143,13 +184,28 @@ main .input-wrapper {
   box-shadow: 0px 35px 50px -15px var(--BoxShadow);
   background-color: var(--backgroundTodo);
   transition: background-color 0.4s ease-in-out;
-  margin-bottom: 36px;
+  margin-bottom: 24px;
+  /********************Media********************/
+  /*********************************************/
+}
+@media screen and (max-width: 570px) {
+  main .input-wrapper {
+    width: 327px;
+  }
 }
 main .input-wrapper .circle {
   width: 24px;
   height: 24px;
   border-radius: 100%;
   border: 1px solid rgba(194, 195, 214, 0.5);
+  /********************Media********************/
+  /*********************************************/
+}
+@media screen and (max-width: 570px) {
+  main .input-wrapper .circle {
+    width: 20px;
+    height: 20px;
+  }
 }
 main .input-wrapper input {
   padding-left: 25px;
@@ -158,6 +214,13 @@ main .input-wrapper input {
   font-size: 18px;
   color: var(--textTodo);
   background: none;
+  /********************Media********************/
+  /*********************************************/
+}
+@media screen and (max-width: 570px) {
+  main .input-wrapper input {
+    font-size: 14px;
+  }
 }
 main .todo-list {
   width: 100%;
@@ -178,15 +241,62 @@ main .todo-list .todo {
   padding: 0 24px 0 24px;
 }
 main .todo-list .todo .btn {
+  position: relative;
   cursor: pointer;
   background: none;
   width: 24px;
   height: 24px;
   border-radius: 100%;
   border: 1px solid rgba(194, 195, 214, 0.5);
+  /********************Media********************/
+  /*********************************************/
+  /*************add hover with linear gradient*************/
 }
-main .todo-list .todo .btn:hover {
-  border: 1px solid rgba(194, 195, 214, 0.5);
+@media screen and (max-width: 570px) {
+  main .todo-list .todo .btn {
+    width: 20px;
+    height: 20px;
+  }
+}
+main .todo-list .todo .btn:hover:before {
+  content: "";
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  background: var(--backgroundTodo);
+  transform: translate(-1px, -1px);
+  z-index: 2;
+  /********************Media********************/
+  /*********************************************/
+}
+@media screen and (max-width: 570px) {
+  main .todo-list .todo .btn:hover:before {
+    width: 20px;
+    height: 20px;
+    transform: translate(-1px, -1px);
+  }
+}
+main .todo-list .todo .btn:hover:after {
+  content: "";
+  position: relative;
+  display: inline-block;
+  width: 27px;
+  height: 27px;
+  border-radius: 100%;
+  background: linear-gradient(to right, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
+  transform: translate(-2.5px, -55px);
+  z-index: 1;
+  /********************Media********************/
+  /*********************************************/
+}
+@media screen and (max-width: 570px) {
+  main .todo-list .todo .btn:hover:after {
+    width: 23px;
+    height: 23px;
+    transform: translate(-2.3px, -47.3px);
+  }
 }
 main .todo-list .todo .btn .check {
   width: 100%;
@@ -210,27 +320,60 @@ main .todo-list .list-footer-container {
   height: 50px;
   justify-content: space-between;
   padding: 0 24px 0 24px;
+  /********************Media********************/
+  /*********************************************/
+}
+@media screen and (max-width: 570px) {
+  main .todo-list .list-footer-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    -moz-column-gap: 80px;
+         column-gap: 80px;
+    grid-template-areas: "item clear" "footer footer";
+    margin: 0 auto;
+    padding: 0;
+  }
+  main .todo-list .list-footer-container #itemDisplay {
+    grid-area: item;
+    padding-top: 18px;
+    padding-left: 25px;
+  }
+  main .todo-list .list-footer-container #clear {
+    grid-area: clear;
+    padding-top: 18px;
+    padding-right: 25px;
+  }
+  main .todo-list .list-footer-container .list-footer-wrapper {
+    grid-area: footer;
+    width: 327px;
+    height: 48px;
+    border-radius: 5px;
+    margin-top: 50px;
+    background-color: var(--backgroundTodo);
+  }
+}
+main .todo-list .list-footer-container #drag {
+  margin-top: 5px;
+  /********************Media********************/
+}
+@media screen and (max-width: 570px) {
+  main .todo-list .list-footer-container #drag {
+    margin-top: 50px;
+  }
 }
 main .todo-list .list-footer-container .list-footer-wrapper {
   display: flex;
   flex-direction: row;
   gap: 18px;
 }
-main .todo-list .list-footer-container .list-footer-wrapper #all {
-  cursor: pointer;
-}
-main .todo-list .list-footer-container .list-footer-wrapper #all:hover {
-  color: var(--textTodoHover);
-}
-main .todo-list .list-footer-container .list-footer-wrapper #active {
-  cursor: pointer;
-}
-main .todo-list .list-footer-container .list-footer-wrapper #active:hover {
-  color: var(--textTodoHover);
-}
+main .todo-list .list-footer-container .list-footer-wrapper #all,
+main .todo-list .list-footer-container .list-footer-wrapper #active,
 main .todo-list .list-footer-container .list-footer-wrapper #completed {
   cursor: pointer;
 }
+main .todo-list .list-footer-container .list-footer-wrapper #all:hover,
+main .todo-list .list-footer-container .list-footer-wrapper #active:hover,
 main .todo-list .list-footer-container .list-footer-wrapper #completed:hover {
   color: var(--textTodoHover);
 }
@@ -240,15 +383,33 @@ main .todo-list .list-footer-container #clear {
 main .todo-list .list-footer-container #clear:hover {
   color: var(--textTodoHover);
 }
+main .todo-list .btnClicked {
+  /*********************************************/
+}
 main .todo-list .btnClicked .btn {
   opacity: 0.9;
   background: linear-gradient(to right, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+main .todo-list .btnClicked .btn:hover {
+  background: linear-gradient(to right, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
+}
+main .todo-list .btnClicked .btn:hover:before {
+  display: none;
+}
+main .todo-list .btnClicked .btn:hover:after {
+  display: none;
+}
 main .todo-list .btnClicked .check {
   background-image: url(./..//..//images/icon-check.svg);
-  background-position: bottom 6px right 5px;
+  background-position: bottom 6.8px right 5.5px;
   background-repeat: no-repeat;
+  /********************Media********************/
+}
+@media screen and (max-width: 570px) {
+  main .todo-list .btnClicked .check {
+    background-position: bottom 5px right 2.8px;
+  }
 }
 main .todo-list .btnClicked .text {
   text-decoration: line-through;
