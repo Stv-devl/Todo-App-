@@ -13,7 +13,7 @@ function createTodo() {
   return { id: id.toString(), name: input.value, completed: false };
 }
 
-// add todo in todos array, save to storage, launch display and setting functions
+// add todo in todos array, save to storage, launch display, display number of todo and setting function
 function createTodoArray() {
   todos.push(createTodo());
   saveToLocalstorage();
@@ -22,7 +22,7 @@ function createTodoArray() {
   settingTodo();
 }
 
-//display todo on page
+//display todo on page when we write something in the input, create the html code in Js
 function displayTodo() {
   let listNumber = todos.length - 1;
 
@@ -33,12 +33,12 @@ function displayTodo() {
 </li>`;
 }
 
-//display todo at reload && when we delete one <li></li>
+//display todo when the page is reload && when we delete one <li></li>
 function getTodos() {
-  displayNumberOfTodo();
+  displayNumberOfTodo(); //show the number of todo left
   list.innerHTML = ""; // when we delete one <li></li> we will delete all the <li></li> for write it again, if not it's write 2 times
 
-  //filter : all
+  //filter : all => if All is clicked
   if (
     window.localStorage.taskTodos &&
     all.classList.contains("listingClicked")
@@ -55,7 +55,7 @@ function getTodos() {
     }
     return;
 
-    //filter : active
+    //filter : Active => if Active is clicked
   } else if (
     window.localStorage.taskTodos &&
     active.classList.contains("listingClicked")
@@ -73,8 +73,9 @@ function getTodos() {
 
       settingTodo();
     }
+    return;
 
-    //filter : completed
+    //filter : completed => if Active is clicked
   } else if (
     window.localStorage.taskTodos &&
     completed.classList.contains("listingClicked")
@@ -93,10 +94,11 @@ function getTodos() {
       relaunchBtnCLicked(i);
       settingTodo();
     }
+    return;
   }
 }
 
-//when the page is reload we have to keep classList = "todo BtnClicked", so if completed is true we add btnClicked at reload. And also working when we click on completed button
+//when the page is reload we have to keep classList = "todo BtnClicked", so if completed is true we add btnClicked at reload. And also when we click on completed button
 function relaunchBtnCLicked(i) {
   const todo = document.querySelectorAll(".todo");
 
@@ -119,7 +121,7 @@ function displayNumberOfTodo() {
   numberDisplay.innerHTML = filterFalse.length;
 }
 
-// save data to local storage
+//save data to local storage
 function saveToLocalstorage() {
   localStorage.setItem(LocalStorageList, JSON.stringify(todos));
 }

@@ -1,3 +1,4 @@
+//variables
 const switchs = document.querySelector(".switch");
 const dark = document.getElementById("dark");
 const light = document.getElementById("light");
